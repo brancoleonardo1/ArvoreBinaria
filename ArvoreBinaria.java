@@ -1,19 +1,15 @@
 public class ArvoreBinaria {
 
-    // Raiz da árvore
     Node raiz;
 
-    // Construtor da árvore
     public ArvoreBinaria() {
         raiz = null;
     }
 
-    // Método para inserir um novo nó na árvore
     public void inserir(int valor) {
         raiz = inserirRec(raiz, valor);
     }
 
-    // Função recursiva para inserir um novo nó na árvore
     private Node inserirRec(Node raiz, int valor) {
         if (raiz == null) {
             raiz = new Node(valor);
@@ -29,12 +25,10 @@ public class ArvoreBinaria {
         return raiz;
     }
 
-    // Método para realizar uma busca em ordem (inorder traversal)
     public void emOrdem() {
         emOrdemRec(raiz);
     }
 
-    // Função recursiva para a busca em ordem
     private void emOrdemRec(Node raiz) {
         if (raiz != null) {
             emOrdemRec(raiz.esquerda);
@@ -43,12 +37,10 @@ public class ArvoreBinaria {
         }
     }
 
-    // Método para remover um nó da árvore
     public void remover(int valor) {
         raiz = removerRec(raiz, valor);
     }
 
-    // Função recursiva para remover um nó
     private Node removerRec(Node raiz, int valor) {
         if (raiz == null) {
             return raiz;
@@ -66,7 +58,6 @@ public class ArvoreBinaria {
                 return raiz.esquerda;
             }
 
-            // Nó com dois filhos: obtenha o sucessor em ordem
             raiz.valor = minValor(raiz.direita);
 
             // Remove o sucessor
@@ -76,7 +67,6 @@ public class ArvoreBinaria {
         return raiz;
     }
 
-    // Método para encontrar o valor mínimo
     private int minValor(Node raiz) {
         int minv = raiz.valor;
         while (raiz.esquerda != null) {
@@ -97,11 +87,9 @@ public class ArvoreBinaria {
         arvore.inserir(60);
         arvore.inserir(80);
 
-        // Mostra a árvore em ordem
         System.out.println("Árvore em ordem:");
         arvore.emOrdem();
 
-        // Remoção de um nó
         System.out.println("\n\nRemovendo o nó com valor 20");
         arvore.remover(20);
         System.out.println("Árvore em ordem:");
